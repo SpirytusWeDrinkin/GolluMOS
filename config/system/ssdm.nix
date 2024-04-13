@@ -29,4 +29,4 @@ in [
     tokyo-night # Name: tokyo-night-sddm
     pkgs.libsForQt5.qt5.qtgraphicaleffects
   ];
-
+}
