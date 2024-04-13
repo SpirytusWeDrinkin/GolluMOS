@@ -12,7 +12,7 @@ in
 
   clock24h = false;
   aLocale = "en_US.UTF-8";
-  Xkblayout = "us";
+  XkbLayout = "us";
   XkbVariant = "";
   aTimezone = "Asia/Jakarta";
 
