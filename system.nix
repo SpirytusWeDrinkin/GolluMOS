@@ -19,7 +19,7 @@ in
   time.timeZone = "${aTimezone}";
 
   # Select internationalisation properties
-  i18n.defaultLocale = "${sLocale}";
+  i18n.defaultLocale = "${aLocale}";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "${aLocale}";
     LC_IDENTIFICATION = "${aLocale}";
@@ -32,7 +32,7 @@ in
     LC_TIME = "${aLocale}";
   };
 
-  console.keyMap = "${XkbLayout}";
+  console.keyMap = "us";
 
   # Define a user account.
   users = {
