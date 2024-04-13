@@ -22,7 +22,7 @@ in
 let
     sugar = pkgs.callPackage ../packages/sddm-sugar-dark.nix {};
     tokyo-night = pkgs.libsForQt5.callPackage ../packages/sddm-tokyo-night.nix {};
-    rose-pine = pkgs.callPackages ../packages/sddm-rose-pine.nix {};
+    rose-pine = pkgs.callPackage ../packages/sddm-rose-pine.nix {};
 
 in [ 
     sugar.sddm-sugar-dark # Name: sugar-dark
