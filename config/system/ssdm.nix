@@ -10,18 +10,18 @@ in
       layout = "${XkbLayout}";
     };
     libinput.enable = true;
-    displayManager.sddm = {
-      enable = true;
-      autoNumlock = true;
-      wayland.enable = true;
-      theme = "tokyo-night-sddm";
-    };
+  };
+  services.displayManager.sddm = {
+    enable = true;
+    autoNumlock = true;
+    wayland.enable = true;
+    theme = "tokyo-night-sddm";
   };
 
   environment.systemPackages =
 let
-    sugar = pkgs.callPackage ../packages/sddm-sugar-dark.nix {};
-    tokyo-night = pkgs.libsForQt5.callPackage ../packages/sddm-tokyo-night.nix {};
+    sugar = pkgs.callPackage ../packages/ssdm-sugar-dark.nix {};
+    tokyo-night = pkgs.libsForQt5.callPackage ../packages/ssdm-tokyo-night.nix {};
     rose-pine = pkgs.callPackages ../packages/ssdm-rose-pine.nix {};
 
 in [ 
