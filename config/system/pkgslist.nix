@@ -14,7 +14,7 @@
     btop
     unrar
     libnotify
-    wl-clipboar
+    wl-clipboard
     lsd
     pkg-config
     meson
