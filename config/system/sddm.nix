@@ -20,13 +20,14 @@ in
 
   environment.systemPackages =
 let
-    sugar = pkgs.callPackage ../packages/ssdm-sugar-dark.nix {};
-    tokyo-night = pkgs.libsForQt5.callPackage ../packages/ssdm-tokyo-night.nix {};
-    rose-pine = pkgs.callPackages ../packages/ssdm-rose-pine.nix {};
+    sugar = pkgs.callPackage ../packages/sddm-sugar-dark.nix {};
+    tokyo-night = pkgs.libsForQt5.callPackage ../packages/sddm-tokyo-night.nix {};
+    rose-pine = pkgs.callPackages ../packages/sddm-rose-pine.nix {};
 
 in [ 
     sugar.sddm-sugar-dark # Name: sugar-dark
     tokyo-night # Name: tokyo-night-sddm
+    rose-pine # Name: rose-pine-sddm
     pkgs.libsForQt5.qt5.qtgraphicaleffects
   ];
 }
