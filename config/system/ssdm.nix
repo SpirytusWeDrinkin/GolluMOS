@@ -6,8 +6,8 @@ in
   services.xserver = {
     enable = true;
     xkb = {
-      variant = "${theKBDVariant}";
-      layout = "${theKBDLayout}";
+      variant = "${XkbVariant}";
+      layout = "${XkbLayout}";
     };
     libinput.enable = true;
     displayManager.sddm = {
