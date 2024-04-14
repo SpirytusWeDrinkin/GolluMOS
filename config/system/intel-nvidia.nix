@@ -9,16 +9,15 @@ lib.mkIf ("${gpuType}" == "intel-nvidia") {
     };
   };
   environment.systemPackages = with pkgs; [
-    autoAddDriverRunpath
     nvtopPackages.full
   ];
   # OpenGL
   hardware.opengl = {
     extraPackages = with pkgs; [
       intel-media-driver
-      vaapiIntel
-      vaapiVdpau
-      libvdpau-va-gl
+      # vaapiIntel
+      # vaapiVdpau
+      # libvdpau-va-gl
     ];
   };
   services.xserver.videoDrivers = ["nvidia"];
