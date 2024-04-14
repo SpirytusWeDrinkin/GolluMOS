@@ -9,6 +9,7 @@ lib.mkIf ("${gpuType}" == "intel-nvidia") {
     };
   };
   environment.systemPackages = with pkgs; [
+    autoAddDriverRunpath
     nvtopPackages.full
   ];
   # OpenGL
