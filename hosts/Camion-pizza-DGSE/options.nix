@@ -18,4 +18,7 @@ in
 
   gpuType = "intel-nvidia";
 
+  intel-bus-id = "PCI:0:2:0";
+  nvidia-bus-id = "PCI:0:2:0";
+
 }
