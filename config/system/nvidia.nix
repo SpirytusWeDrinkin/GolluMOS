@@ -3,7 +3,7 @@
 let inherit (import ../../hosts/${host}/options.nix) gpuType; in
 lib.mkIf ("${gpuType}" == "nvidia") { 
   environment.systemPackages = with pkgs; [
-    nvtop
+    nvtopPackages.full
   ];
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {

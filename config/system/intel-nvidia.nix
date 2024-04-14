@@ -9,7 +9,7 @@ lib.mkIf ("${gpuType}" == "intel-nvidia") {
     };
   };
   environment.systemPackages = with pkgs; [
-    nvtop
+    nvtopPackages.full
   ];
   # OpenGL
   hardware.opengl = {
