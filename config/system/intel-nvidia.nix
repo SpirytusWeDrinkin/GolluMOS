@@ -8,16 +8,16 @@ lib.mkIf ("${gpuType}" == "intel-nvidia") {
       enableHybridCodec = true;
     };
   };
-  environment.systemPackages = with pkgs; [
-    nvtopPackages.full
-  ];
+  # environment.systemPackages = with pkgs; [
+    # nvtopPackages.full
+  # ];
   # OpenGL
   hardware.opengl = {
     extraPackages = with pkgs; [
-      # intel-media-driver
-      # vaapiIntel
-      # vaapiVdpau
-      # libvdpau-va-gl
+      intel-media-driver
+      vaapiIntel
+      vaapiVdpau
+      libvdpau-va-gl
     ];
   };
   services.xserver.videoDrivers = ["nvidia"];
