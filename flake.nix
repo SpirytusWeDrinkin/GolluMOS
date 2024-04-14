@@ -19,13 +19,13 @@
 
   };
 
-  outputs = inputs@{ home-manager, nixpkgs, ... }: 
+  outputs = inputs@{ home-manager, nixpkgs, impermanence, ... }: 
   let
-    host = "Camion-pizza-DGSE";
+    #host = "Camion-pizza-DGSE";
     system = "x86_64-linux";
-    # inherit (import ./hosts/${host}/options.nix) username hostname;
-    username = "abelc";
-    hostname = "Camion-pizza-DGSE";
+    inherit (import ./hosts/${host}/options.nix) username hostname;
+    #username = "abelc";
+    #hostname = "Camion-pizza-DGSE";
 
     pkgs = import nixpkgs {
       inherit system;
