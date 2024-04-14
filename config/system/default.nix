@@ -3,7 +3,7 @@
 {
   imports = [
     ./amd.nix
-    ./default-kernel.nix
+    # ./default-kernel.nix
     ./grub.nix
     ./intel.nix
     ./intel-amd.nix
