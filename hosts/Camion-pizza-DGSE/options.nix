@@ -16,4 +16,6 @@ in
   XkbVariant = "";
   aTimezone = "Asia/Jakarta";
 
+  gpuType = "intel-nvidia";
+
 }
