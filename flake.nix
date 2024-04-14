@@ -22,9 +22,9 @@
   outputs = inputs@{ home-manager, nixpkgs, impermanence, ... }: 
   let
     
-    #host = "nosound";
+    host = "nosound";
     system = "x86_64-linux";
-    inherit (import ./hosts/$host/options.nix) username hostname;
+    inherit (import ./hosts/${host}/options.nix) username hostname;
     #username = "abelc";
     #hostname = "Camion-pizza-DGSE";
 
