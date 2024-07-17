@@ -24,6 +24,8 @@
     appimage-run
     playerctl
     vim
+
+    kitty
   ];
 
   programs = {
