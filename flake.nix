@@ -6,15 +6,7 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nix-colors.url = "github:misterio77/nix-colors";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland-plugins = {
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    stylix.url = "github:danth/stylix";
     impermanence.url = "github:nix-community/impermanence";
 
   };
@@ -22,11 +14,11 @@
   outputs = inputs@{ home-manager, nixpkgs, impermanence, ... }: 
   let
     
-    host = "nosound";
+    host = "Restau-kebab-DGSI";
     system = "x86_64-linux";
     inherit (import ./hosts/${host}/options.nix) username hostname;
     #username = "abelc";
-    #hostname = "Camion-pizza-DGSE";
+    #hostname = "Restau-kebab-DGSI";
 
     pkgs = import nixpkgs {
       inherit system;
@@ -44,7 +36,20 @@
           inherit host;
         };
 	    modules = [ 
-	      ./system.nix
+        ./system.nix
+        inputs.stylix.nixosModules.stylix
+        home-manager.nixosModules.home-manager
+        {
+            home-manager.extraSpecialArgs = {
+                inherit username;
+                inherit inputs;
+                inherit host;
+            };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
+            home-manager.users.${username} = import ./users/${username}/home.nix;
+        }
         ];
       };
     };

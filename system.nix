@@ -9,6 +9,7 @@ in
     [
       ./hosts/${host}/hardware.nix
       ./config/system
+      ./config/theme
       ./users/users.nix
     ];
 

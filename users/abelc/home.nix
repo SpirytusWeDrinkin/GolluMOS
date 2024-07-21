@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (import ./../../hosts/${host}/options.nix) gitUsername gitEmail;
+  inherit (import ./../../hosts/${host}/options.nix) gitUsername gitEmail theme;
 in
 {
   # Home Manager Settings
@@ -14,13 +14,11 @@ in
   home.stateVersion = "23.11";
   # Import Program Configurations
   imports = [
-    ../../config/hyprland.nix
-    ../../config/neovim.nix
-    ../../config/alacritty.nix
+    ../../config/user
   ];
   # Place Files Inside Home Directory
   home.file."Pictures/Wallpapers" = {
-    source = ../config/wallpapers;
+    source = ../../config/theme/wallpapers;
     recursive = true;
   };
   # Install & Configure Git
@@ -35,23 +33,6 @@ in
       enable = true;
       createDirectories = true;
     };
-  };
-  gtk = {
-    iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
-    };
-    gtk3.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-    gtk4.extraConfig = {
-      gtk-application-prefer-dark-theme = 1;
-    };
-  };
-  qt = {
-    enable = true;
-    style.name = "adwaita-dark";
-    platformTheme.name = "gtk3";
   };
   programs = {
     btop = {

@@ -9,7 +9,6 @@ in
       variant = "${XkbVariant}";
       layout = "${XkbLayout}";
     };
-    libinput.enable = true;
   };
   services.displayManager.sddm = {
     enable = true;
@@ -17,6 +16,7 @@ in
     wayland.enable = true;
     theme = "tokyo-night-sddm";
   };
+  services.libinput.enable = true;
 
   environment.systemPackages =
 let

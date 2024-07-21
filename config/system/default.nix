@@ -13,5 +13,6 @@
     ./services.nix
     ./sddm.nix
     ./steam.nix
+    ./virtualisation
   ];
 }
