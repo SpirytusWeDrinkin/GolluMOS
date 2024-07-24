@@ -5,9 +5,9 @@
       ./alacritty.nix
       # ./communication
       ./editor
-      ./hyprland.nix
+      ./hyprland/hyprland.nix
       ./menu
-      ./nvim.nix
+      ./nvim/nvim.nix
       ./shell
     ];
 }

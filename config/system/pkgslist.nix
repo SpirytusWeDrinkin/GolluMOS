@@ -28,6 +28,9 @@
     slack
     vault
     cmake
+    pavucontrol
+    webcord
+    wayshot
 
     firefox
     kitty

@@ -4,12 +4,12 @@
   ...
 }:
 
-let inherit (import ../../hosts/${host}/options.nix) colorScheme; in
+# let inherit (import ../../hosts/${host}/options.nix) colorScheme; in
 {
     stylix = {
         enable = true;
-        base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorScheme}.yaml";
-        image = ./wallpapers/gurren-lagan.jpg;
+        # base16Scheme = "${pkgs.base16-schemes}/share/themes/${colorScheme}.yaml";
+        # image = ./wallpapers/everforest.jpg;
         polarity = "dark";
         opacity.terminal = 0.8;
         cursor.package = pkgs.bibata-cursors;

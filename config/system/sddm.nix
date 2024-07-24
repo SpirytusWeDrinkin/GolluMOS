@@ -10,24 +10,24 @@ in
       layout = "${XkbLayout}";
     };
   };
+
   services.displayManager.sddm = {
     enable = true;
     autoNumlock = true;
     wayland.enable = true;
-    theme = "tokyo-night-sddm";
+    theme = "${import ../packages/sddm-theme.nix { inherit pkgs; }}";
   };
+
   services.libinput.enable = true;
 
-  environment.systemPackages =
+   environment.systemPackages =
 let
-    sugar = pkgs.callPackage ../packages/sddm-sugar-dark.nix {};
-    tokyo-night = pkgs.libsForQt5.callPackage ../packages/sddm-tokyo-night.nix {};
-    rose-pine = pkgs.callPackage ../packages/sddm-rose-pine.nix {};
+    # sddm-theme = pkgs.callPackage ../packages/sddm-theme.nix {};
 
 in [ 
-    sugar.sddm-sugar-dark # Name: sugar-dark
-    tokyo-night # Name: tokyo-night-sddm
-    rose-pine # Name: rose-pine-sddm
     pkgs.libsForQt5.qt5.qtgraphicaleffects
-  ];
+    pkgs.libsForQt5.qt5.qtquickcontrols
+    pkgs.qt6ct
+    # sddm-theme
+  ]; 
 }

@@ -68,7 +68,7 @@ dashboard.section.buttons.val = {
     dashboard.button( "f", "  > Find file", ":cd $HOME| Telescope find_files<CR>"),
     dashboard.button( "r", "  > Recent"   , ":Telescope oldfiles<CR>"),
     dashboard.button( "s", "  > Settings" , ":e $MYVIMRC<CR>"),
-    dashboard.button( "l", "󰒲  > Lazy check" , ":Lazy check<CR>"),
+    -- dashboard.button( "l", "󰒲  > Lazy check" , ":Lazy check<CR>"),
     dashboard.button( "q", "󰩈  Quit", "<cmd>qa<CR>" ),
 }
 
@@ -82,4 +82,3 @@ alpha.setup(dashboard.opts)
 vim.cmd([[
 autocmd FileType alpha setlocal nofoldenable
 ]])
-

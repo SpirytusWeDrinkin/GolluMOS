@@ -1,8 +1,11 @@
+{ config, ... }:
 {
+    imports = [ ./waybar.nix ./swaylock.nix ];
     wayland.windowManager.hyprland = {
         enable = true;
         xwayland.enable = true;
         settings = {
+            exec-once = "waybar";
             # Environment variables
             env = [
                     # Enable Ozone support for NixOS
@@ -48,8 +51,10 @@
                     "$mainMod, E, exec, alacritty --class floating -e ranger"
                     "$mainMod, V, togglefloating"
                     "$mainMod, D, exec, rofi -show drun"
-                    "$mainMod, P, pseudo"
+                    "ALT, Tab, exec, rofi -show window"
+                    "$mainMod, P, exec, sh ~/.config/rofi/leave.sh"
                     "$mainMod, J, togglesplit"
+                    "$mainMod, S, exec, wayshot"
 
                     # Move focus with arrow keys
                     "$mainMod, left, movefocus, l"

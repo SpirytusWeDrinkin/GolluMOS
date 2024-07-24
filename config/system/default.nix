@@ -8,6 +8,7 @@
     ./intel.nix
     ./intel-amd.nix
     ./intel-nvidia.nix
+    ./nh.nix
     ./nvidia.nix
     ./pkgslist.nix
     ./services.nix

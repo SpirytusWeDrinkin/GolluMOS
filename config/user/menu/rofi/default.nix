@@ -34,6 +34,7 @@
 
             "#window" = {
                 width = mkLiteral "45%";
+                height = mkLiteral "39.5%";
             };
 
             "#mainbox" = {

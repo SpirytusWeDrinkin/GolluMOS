@@ -13,10 +13,10 @@ in
   clock24h = false;
   aLocale = "en_US.UTF-8";
   XkbLayout = "us";
-  XkbVariant = "";
+  XkbVariant = "intl";
   aTimezone = "Europe/Paris";
 
   gpuType = "intel";
 
-  colorScheme = "rose-pine-moon";
+  colorScheme = "gruvbox-dark";
 }

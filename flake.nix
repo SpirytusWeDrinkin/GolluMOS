@@ -8,7 +8,10 @@
     nix-colors.url = "github:misterio77/nix-colors";
     stylix.url = "github:danth/stylix";
     impermanence.url = "github:nix-community/impermanence";
-
+    fine-cmdline = {
+      url = "github:VonHeikemen/fine-cmdline.nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ home-manager, nixpkgs, impermanence, ... }: 

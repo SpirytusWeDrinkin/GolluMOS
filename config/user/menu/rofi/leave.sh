@@ -2,9 +2,9 @@
 
 choice=$(printf "Lock\nLogout\nSuspend\nReboot\nShutdown" | rofi -dmenu -i )
 if [[ $choice == "Lock" ]];then
-    betterlockscreen -l
+    swaylock-fancy -e -f Iosevka-NF-Bold -t "$(whoami)@$(hostname)"
 elif [[ $choice == "Logout" ]];then
-    bspc quit
+    hyprctl dispatch exit
 elif [[ $choice == "Suspend" ]];then
     systemctl suspend
 elif [[ $choice == "Reboot" ]];then

@@ -1,11 +1,13 @@
 { pkgs, config, ... }:
 
 {
+  boot.loader.timeout = null;
   boot.loader.grub = {
     enable = true;
     device = "nodev";
     efiSupport = true;
     useOSProber = true;
+    splashImage = null;
 
     theme = pkgs.stdenv.mkDerivation rec {
       pname = "catppuccin-grub";
