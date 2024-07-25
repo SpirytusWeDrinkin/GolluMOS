@@ -1,11 +1,13 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, host, ... }:
 let
   finecmdline = pkgs.vimUtils.buildVimPlugin {
     name = "fine-cmdline";
     src = inputs.fine-cmdline;
   };
+  inherit (import ../../../hosts/${host}/options.nix) colorScheme;
 in
 {
+  imports = [ ../../theme/colorSchemes/${colorScheme}/vim.nix ];
   programs = {
     neovim = {
       enable = true;
