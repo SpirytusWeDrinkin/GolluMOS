@@ -1,5 +1,5 @@
-{ pkgs, host, ... }:
-let inherit (import ../../hosts/${host}/options.nix) username; in
+{ pkgs, ... }:
+let inherit (import ../../options.nix) username; in
 {
     services.greetd = {
       enable = true;

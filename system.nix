@@ -1,15 +1,15 @@
-{ hostname, host, ... }:
+{ hostname, ... }:
 let 
-  inherit (import ./hosts/${host}/options.nix) 
+  inherit (import ./options.nix) 
     aLocale aTimezone;
 in
 {
   imports =
     [
-      ./hosts/${host}/hardware.nix
+      ./hosts/${hostname}/hardware.nix
       ./config/system
       ./config/theme
-      ./users/users.nix
+      ./users.nix
     ];
 
   networking.hostName = "${hostname}"; # Define your hostname

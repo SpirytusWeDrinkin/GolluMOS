@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ ... }:
 
 {
   # Steam Configuration

@@ -1,6 +1,6 @@
-{ host, ... }:
+{ ... }:
 
- let inherit (import ../../hosts/${host}/options.nix) colorScheme; in
+ let inherit (import ../../options.nix) colorScheme; in
 {
     imports = [
         ./fonts.nix

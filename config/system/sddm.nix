@@ -1,6 +1,6 @@
-{ pkgs, host, ... }:
+{ pkgs, ... }:
 
-let inherit (import ../../hosts/${host}/options.nix) kbVariant kbLayout ;
+let inherit (import ../../options.nix) kbVariant kbLayout ;
 in
 {
   services.xserver = {

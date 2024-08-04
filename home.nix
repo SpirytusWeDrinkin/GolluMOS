@@ -1,10 +1,9 @@
 { 
-  username,
-  host,
+  username, 
   ...
 }:
 let
-  inherit (import ./../../hosts/${host}/options.nix) gitUsername gitEmail theme;
+  inherit (import ./options.nix) gitUsername gitEmail;
 in
 {
   # Home Manager Settings
