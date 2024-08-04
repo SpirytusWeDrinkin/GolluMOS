@@ -1,4 +1,4 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, ... }:
 
 {
   # List services that you want to enable:
@@ -13,6 +13,10 @@
       pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal
     ];
+  };
+  services.smartd = {
+    enable = false;
+    autodetect = true;
   };
   services.pipewire = {
     enable = true;
@@ -48,6 +52,7 @@
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
   services.blueman.enable = true;
+  security.pam.services.hyprlock = {};
   security.pam.services.swaylock = {
     text = ''
       auth include login

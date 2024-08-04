@@ -1,10 +1,12 @@
-{ config, ... }:
+{ host, ... }:
+let inherit (import ../../../hosts/${host}/options.nix) kbLayout kbVariant; in
 {
     imports = [ ./waybar.nix ./swaylock.nix ];
     wayland.windowManager.hyprland = {
         enable = true;
         xwayland.enable = true;
         settings = {
+
             exec-once = "waybar";
             # Environment variables
             env = [
@@ -54,7 +56,7 @@
                     "ALT, Tab, exec, rofi -show window"
                     "$mainMod, P, exec, sh ~/.config/rofi/leave.sh"
                     "$mainMod, J, togglesplit"
-                    "$mainMod, S, exec, wayshot"
+                    "$mainMod, S, exec, grim -g \"$(slurp)\" - | wl-copy"
 
                     # Move focus with arrow keys
                     "$mainMod, left, movefocus, l"
@@ -98,8 +100,11 @@
                 follow_mouse = false;
                 touchpad = {
                     natural_scroll = "yes";
+                    scroll_factor = 0.3;
                 };
                 # sensitivity = 1;  # Commented out as -1.0 - 1.0 range
+                kb_layout = "${kbLayout}";
+                kb_variant = "${kbVariant}";
             };
 
             # xwayland options

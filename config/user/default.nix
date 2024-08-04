@@ -9,5 +9,6 @@
       ./menu
       ./nvim/nvim.nix
       ./shell
+      ./notify/mako.nix
     ];
 }

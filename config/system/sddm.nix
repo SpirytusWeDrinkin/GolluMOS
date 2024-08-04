@@ -1,13 +1,13 @@
-{ pkgs, config, host, ... }:
+{ pkgs, host, ... }:
 
-let inherit (import ../../hosts/${host}/options.nix) XkbVariant XkbLayout ;
+let inherit (import ../../hosts/${host}/options.nix) kbVariant kbLayout ;
 in
 {
   services.xserver = {
-    enable = true;
+    enable = false;
     xkb = {
-      variant = "${XkbVariant}";
-      layout = "${XkbLayout}";
+      variant = "${kbVariant}";
+      layout = "${kbLayout}";
     };
   };
 
@@ -20,14 +20,8 @@ in
 
   services.libinput.enable = true;
 
-   environment.systemPackages =
-let
-    # sddm-theme = pkgs.callPackage ../packages/sddm-theme.nix {};
-
-in [ 
+   environment.systemPackages = [ 
     pkgs.libsForQt5.qt5.qtgraphicaleffects
     pkgs.libsForQt5.qt5.qtquickcontrols
-    pkgs.qt6ct
-    # sddm-theme
   ]; 
 }

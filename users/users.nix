@@ -1,4 +1,4 @@
-{ pkgs, config, username, host, ... }:
+{ pkgs, username, host, ... }:
 
 let
   inherit (import ./../hosts/${host}/options.nix) gitUsername ;
@@ -10,9 +10,6 @@ in {
       extraGroups = [ "networkmanager" "wheel" "docker" ];
       shell = pkgs.zsh;
       ignoreShellProgramCheck = true;
-      packages = with pkgs; [];
     };
   };
 }
-
-

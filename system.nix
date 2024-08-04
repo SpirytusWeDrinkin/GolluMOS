@@ -1,8 +1,7 @@
-{ inputs, config, pkgs,
-  username, hostname, host, ... }:
+{ hostname, host, ... }:
 let 
   inherit (import ./hosts/${host}/options.nix) 
-    aLocale aTimezone gitUsername;
+    aLocale aTimezone;
 in
 {
   imports =
