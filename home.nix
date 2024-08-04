@@ -12,11 +12,11 @@ in
   home.stateVersion = "23.11";
   # Import Program Configurations
   imports = [
-    ../../config/user
+    ./config/user
   ];
   # Place Files Inside Home Directory
   home.file."Pictures/Wallpapers" = {
-    source = ../../config/theme/wallpapers;
+    source = ./config/theme/wallpapers;
     recursive = true;
   };
   # Install & Configure Git
