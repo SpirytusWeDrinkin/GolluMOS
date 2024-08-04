@@ -25,6 +25,7 @@ git clone https://github.com/SpirytusWeDrinkin/GolluMOS.git
 echo "-----"
 
 # Create .GolluMOS directory and copy repository content into it
+cd || exit
 mkdir -p .GolluMOS
 cp -r GolluMOS/* .GolluMOS/
 rm -rf GolluMOS .GolluMOS/.git/  # Remove the cloned directory
@@ -115,10 +116,7 @@ EOL
 echo "The configuration file has been created successfully: $outputFile 🗂️"
 echo "-----"
 
-echo "The password for a new user is password 🔐"
 sleep 2
-
-echo "-----"
 
 echo "Generating The Hardware Configuration... 🛠️"
 sudo nixos-generate-config --show-hardware-config > ${outputDir}/hardware.nix
