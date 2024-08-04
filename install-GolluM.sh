@@ -27,7 +27,7 @@ echo "-----"
 # Create .GolluMOS directory and copy repository content into it
 mkdir -p .GolluMOS
 cp -r GolluMOS/* .GolluMOS/
-rm -rf gollumos .GolluMOS/.git/  # Remove the cloned directory
+rm -rf GolluMOS .GolluMOS/.git/  # Remove the cloned directory
 
 # Change to the new directory
 cd .GolluMOS || exit
@@ -128,5 +128,5 @@ echo "-----"
 
 echo "Now Going To Build GolluMOS, 🤞"
 export NIX_CONFIG="experimental-features = nix-command flakes" 
-sudo nixos-rebuild switch --flake '.#${setHostname}'
+sudo nixos-rebuild switch --flake .#${setHostname}
 
