@@ -34,7 +34,7 @@
 	    specialArgs = { 
           inherit system; inherit inputs; 
           inherit username; inherit hostname;
-          inherit host; inherit pkgs;
+          inherit pkgs;
         };
 	    modules = [ 
         ./system.nix
@@ -44,7 +44,6 @@
             home-manager.extraSpecialArgs = {
                 inherit username;
                 inherit inputs;
-                inherit host;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

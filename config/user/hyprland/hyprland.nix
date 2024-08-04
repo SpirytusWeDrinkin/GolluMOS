@@ -1,5 +1,5 @@
 { ... }:
-let inherit (import ../../options.nix) kbLayout kbVariant; in
+let inherit (import ../../../options.nix) kbLayout kbVariant; in
 {
     imports = [ ./waybar.nix ./swaylock.nix ];
     wayland.windowManager.hyprland = {
