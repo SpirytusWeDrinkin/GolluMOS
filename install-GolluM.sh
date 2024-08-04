@@ -35,23 +35,23 @@ cd .GolluMOS || exit
 echo "-----"
 
 # Prompt for variables from the user
-read -pr "Enter username: " setUsername
+read -p "Enter username: " setUsername
 echo "-----"
-read -pr "Enter hostname: " setHostname
+read -p "Enter hostname: " setHostname
 echo "-----"
-read -pr "Enter Git user name: " gitUsername
+read -p "Enter Git user name: " gitUsername
 echo "-----"
-read -pr "Enter Git email: " gitEmail
+read -p "Enter Git email: " gitEmail
 echo "-----"
-read -pr "Use 24h clock (true/false): " clock24h
+read -p "Use 24h clock (true/false): " clock24h
 echo "-----"
-read -pr "Enter locale (e.g., en_US.UTF-8): " aLocale
+read -p "Enter locale (e.g., en_US.UTF-8): " aLocale
 echo "-----"
-read -pr "Enter keyboard layout (e.g., us): " kbLayout
+read -p "Enter keyboard layout (e.g., us): " kbLayout
 echo "-----"
-read -pr "Enter keyboard variant (e.g., intl): " kbVariant
+read -p "Enter keyboard variant (e.g., intl): " kbVariant
 echo "-----"
-read -pr "Enter timezone (e.g., Europe/Paris): " aTimezone
+read -p "Enter timezone (e.g., Europe/Paris): " aTimezone
 echo "-----"
 
 # Provide a warning about GPU configuration
@@ -60,18 +60,18 @@ echo "it is generally recommended to choose only the integrated GPU for now (e.g
 echo "You can always update the GPU configuration later but can proceed now if you know the correct bus IDs."
 echo "-----"
 
-read -pr "Enter GPU type (e.g., intel-nvidia): " gpuType
+read -p "Enter GPU type (e.g., intel-nvidia): " gpuType
 echo "-----"
 
 # Ask for Intel and Nvidia bus IDs only if GPU type is intel-nvidia
 if [ "$gpuType" == "intel-nvidia" ]; then
-    read -pr "Enter Intel bus ID (e.g., PCI:0:2:0): " intelBusId
+    read -p "Enter Intel bus ID (e.g., PCI:0:2:0): " intelBusId
     echo "-----"
-    read -pr "Enter Nvidia bus ID (e.g., PCI:1:0:0): " nvidiaBusId
+    read -p "Enter Nvidia bus ID (e.g., PCI:1:0:0): " nvidiaBusId
     echo "-----"
 fi
 
-read -pr "Enter color scheme (e.g., gruvbox-dark): " colorScheme
+read -p "Enter color scheme (e.g., gruvbox-dark): " colorScheme
 echo "-----"
 
 # Create the directory for the hostname
