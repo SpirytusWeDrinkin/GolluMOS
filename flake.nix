@@ -17,9 +17,9 @@
   outputs = inputs@{ home-manager, nixpkgs, impermanence, self, ... }: 
   let
     
-    host = "Restau-kebab-DGSI";
     system = "x86_64-linux";
-    inherit (import ./hosts/${host}/options.nix) username hostname;
+    inherit (import ./options.nix) username hostname;
+    host = hostname;
 
     pkgs = import nixpkgs {
       inherit system;
