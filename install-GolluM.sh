@@ -122,11 +122,11 @@ sleep 2
 echo "-----"
 
 echo "Generating The Hardware Configuration... 🛠️"
-sudo nixos-generate-config --show-hardware-config | sudo tee '${outputDir}/hardware.nix'
+sudo nixos-generate-config --show-hardware-config > '${outputDir}/hardware.nix'
 
 echo "-----"
 
 echo "Now Going To Build GolluMOS, 🤞"
-export NIX_CONFIG="experimental-features = nix-command flakes" 
+NIX_CONFIG="experimental-features = nix-command flakes" 
 sudo nixos-rebuild switch --flake .#${setHostname}
 
