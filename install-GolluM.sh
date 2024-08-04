@@ -35,15 +35,14 @@ cd .GolluMOS || exit
 echo "-----"
 
 # Prompt for variables from the user
-read -p "Enter username: " setUsername
+echo "You will keep the same username as your current one."
+setUsername=$(whoami)
 echo "-----"
 read -p "Enter hostname: " setHostname
 echo "-----"
 read -p "Enter Git user name: " gitUsername
 echo "-----"
 read -p "Enter Git email: " gitEmail
-echo "-----"
-read -p "Use 24h clock (true/false): " clock24h
 echo "-----"
 read -p "Enter locale (e.g., en_US.UTF-8): " aLocale
 echo "-----"
@@ -79,7 +78,7 @@ outputDir="./hosts/${setHostname}"
 mkdir -p "$outputDir"
 
 # Output file path
-outputFile="${outputDir}/options.nix"
+outputFile="./options.nix"
 
 # Create the configuration file
 cat <<EOL > "$outputFile"
@@ -122,7 +121,7 @@ sleep 2
 echo "-----"
 
 echo "Generating The Hardware Configuration... 🛠️"
-sudo nixos-generate-config --show-hardware-config > '${outputDir}/hardware.nix'
+sudo nixos-generate-config --show-hardware-config > ${outputDir}/hardware.nix
 
 echo "-----"
 
