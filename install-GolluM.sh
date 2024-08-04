@@ -22,8 +22,6 @@ echo "-----"
 echo "Cloning GolluMOS Repository... 🚀"
 git clone https://github.com/SpirytusWeDrinkin/GolluMOS.git
 
-echo "-----"
-
 # Create .GolluMOS directory and copy repository content into it
 cd || exit
 mkdir -p .GolluMOS
@@ -91,7 +89,6 @@ cat <<EOL > "$outputFile"
   gitUsername = "$gitUsername";
   gitEmail = "$gitEmail";
 
-  clock24h = $clock24h;
   aLocale = "$aLocale";
   kbLayout = "$kbLayout";
   kbVariant = "$kbVariant";
