@@ -25,6 +25,7 @@ echo "Cloning GolluMOS Repository..."
 git clone https://github.com/SpirytusWeDrinkin/GolluMOS.git
 
 # Move and organize GolluMOS files
+echo "Creating ~/.GollumOS, the configuration will be saved in this directory, feel free to modify it afterward"
 cd || exit
 mkdir -p .GolluMOS
 cp -r GolluMOS/* .GolluMOS/
