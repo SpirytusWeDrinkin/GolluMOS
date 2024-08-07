@@ -12,7 +12,7 @@ fi
 
 # Check for Git
 if command -v git &> /dev/null; then
-  echo "Git is installed, continuing with installation. ✅"
+  echo "Git is installed, continuing with installation."
 else
   echo "Git is not installed. Please install it and try again."
   echo "  Example: nix-shell -p git"
@@ -24,6 +24,19 @@ echo "---"
 cd || exit
 echo "Cloning GolluMOS Repository..."
 git clone https://github.com/SpirytusWeDrinkin/GolluMOS.git
+
+echo "---"
+
+# Vérifiez si le répertoire ou le fichier .GolluMOS existe
+if [ -e "$HOME/.GolluMOS" ]; then
+    echo ".GolluMOS already exists."
+    read -p "Do you want to overwrite it? (y/n): " overwrite
+    if [ "$overwrite" != "y" ]; then
+        echo "Installation aborted."
+        exit 1
+    fi
+    rm -rf "$HOME/.GolluMOS"
+fi
 
 # Move and organize GolluMOS files
 echo "Creating ~/.GollumOS, the configuration will be saved in this directory, feel free to modify it afterward"
