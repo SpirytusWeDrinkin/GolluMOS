@@ -6,7 +6,7 @@ in
 {
   imports =
     [
-      ./hosts/${hostname}/hardware.nix
+      ./hardware.nix
       ./config/system
       ./config/theme
       ./users.nix

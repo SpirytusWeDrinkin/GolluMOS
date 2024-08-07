@@ -1,107 +1,115 @@
 #!/usr/bin/env bash
 
-if [ -n "$(cat /etc/os-release | grep -i nixos)" ]; then
-    echo "This is NixOS. 👍"
-    echo "Continuing with the GolluMOS installation."
-    echo "-----"
+# Check for NixOS
+if grep -qi NixOS /etc/os-release; then
+  echo "This is NixOS. "
+  echo "Continuing with the GolluMOS installation."
+  echo "---"
 else
-    echo "This is not NixOS or the distribution information is not available. ❌"
-    exit
+  echo "This is not NixOS or the distribution information is not available. ❌"
+  exit 1
 fi
 
+# Check for Git
 if command -v git &> /dev/null; then
-    echo "Git is installed, continuing with installation. ✅"
+  echo "Git is installed, continuing with installation. ✅"
 else
-    echo "Git is not installed. Please install Git and try again."
-    echo "Example: nix-shell -p git"
-    exit 1
+  echo "Git is not installed. Please install it and try again."
+  echo "  Example: nix-shell -p git"
+  exit 1
 fi
 
-echo "-----"
+echo "---"
 
-echo "Cloning GolluMOS Repository... 🚀"
+echo "Cloning GolluMOS Repository..."
 git clone https://github.com/SpirytusWeDrinkin/GolluMOS.git
 
-# Create .GolluMOS directory and copy repository content into it
+# Move and organize GolluMOS files
 cd || exit
 mkdir -p .GolluMOS
 cp -r GolluMOS/* .GolluMOS/
-rm -rf GolluMOS .GolluMOS/.git/  # Remove the cloned directory
+rm -rf GolluMOS .GolluMOS/.git  # Remove cloned directory
 
-# Change to the new directory
 cd .GolluMOS || exit
 
-echo "-----"
+echo "---"
 
-# Prompt for variables from the user
-echo "You will keep the same username as your current one."
-setUsername=$(whoami)
-echo "-----"
-read -p "Enter hostname: " setHostname
-echo "-----"
-read -p "Enter Git user name: " gitUsername
-echo "-----"
-read -p "Enter Git email: " gitEmail
-echo "-----"
-read -p "Enter locale (e.g., en_US.UTF-8): " aLocale
-echo "-----"
-read -p "Enter keyboard layout (e.g., us): " kbLayout
-echo "-----"
-read -p "Enter keyboard variant (e.g., intl): " kbVariant
-echo "-----"
-read -p "Enter timezone (e.g., Europe/Paris): " aTimezone
-echo "-----"
+# User information
+username=$(whoami)
+echo "Your username will remain the same: $username"
 
-# Provide a warning about GPU configuration
-echo "⚠️ Warning: You are going to select the GPU type, if you are using a dual GPU setup (e.g., Intel + Nvidia),"
-echo "it is generally recommended to choose only the integrated GPU for now (e.g., Intel or AMD)."
-echo "You can always update the GPU configuration later but can proceed now if you know the correct bus IDs."
-echo "-----"
+echo "---"
 
-read -p "Enter GPU type (e.g., intel-nvidia): " gpuType
-echo "-----"
+echo "Please answer the following, default values are shown in brackets"
 
-# Ask for Intel and Nvidia bus IDs only if GPU type is intel-nvidia
+echo "---"
+
+read -p "Enter hostname: " hostname
+
+read -p "Git username: " gitUsername
+
+read -p "Git email: " gitEmail
+
+# Configuration options with defaults
+read -p "Locale [en_US.UTF-8]: " locale
+locale=${locale:-en_US.UTF-8}
+
+read -p "Keyboard layout [us]: " keyboardLayout
+keyboardLayout=${keyboardLayout:-us}
+
+read -p "Keyboard variant [ ]: " keyboardVariant
+keyboardVariant=${keyboardVariant:-}
+
+read -p "Timezone [Europe/London]: " timezone
+timezone=${timezone:-Europe/London}
+
+echo "---"
+
+echo "⚠️ Warning: GPU configuration"
+echo "  - Dual GPU setups (e.g., Intel + Nvidia) is easier to set up when choosing only the integrated GPU (Intel/AMD)."
+echo "  - You can always update it later. Proceed with dual-GPU setup only if you know the correct GPU bus IDs."
+
+read -p "GPU type: " gpuType
+
+# Get bus IDs only for intel-nvidia
 if [ "$gpuType" == "intel-nvidia" ]; then
-    read -p "Enter Intel bus ID (e.g., PCI:0:2:0): " intelBusId
-    echo "-----"
-    read -p "Enter Nvidia bus ID (e.g., PCI:1:0:0): " nvidiaBusId
-    echo "-----"
+  read -p "Intel bus ID: " intelBusId
+  read -p "Nvidia bus ID: " nvidiaBusId
 fi
 
-read -p "Enter color scheme (e.g., gruvbox-dark): " colorScheme
-echo "-----"
+echo "---"
+echo "Available colorscheme include everforest, gruvbox-dark, rose-pine, dracula"
+read -p "Color scheme [everforest]: " colorScheme
+colorScheme=${colorScheme:-everforest}
 
-# Create the directory for the hostname
-outputDir="./hosts/${setHostname}"
+# Create output directory and file path
+outputDir="./hosts/${hostname}"
 mkdir -p "$outputDir"
-
-# Output file path
 outputFile="./options.nix"
 
-# Create the configuration file
+# Write configuration file
 cat <<EOL > "$outputFile"
 {
-  username = "${setUsername}";
-  hostname = "${setHostname}";
-  userHome = "/home/${setUsername}";
+  username = "${username}";
+  hostname = "${hostname}";
+  userHome = "/home/${username}";
 
   gitUsername = "$gitUsername";
   gitEmail = "$gitEmail";
 
-  aLocale = "$aLocale";
-  kbLayout = "$kbLayout";
-  kbVariant = "$kbVariant";
-  aTimezone = "$aTimezone";
+  locale = "$locale";
+  keyboardLayout = "$keyboardLayout";
+  keyboardVariant = "$keyboardVariant";
+  timezone = "$timezone";
 
   gpuType = "$gpuType";
 EOL
 
-# Add Intel and Nvidia bus IDs if GPU type is intel-nvidia
+# Add bus IDs for intel-nvidia
 if [ "$gpuType" == "intel-nvidia" ]; then
   cat <<EOL >> "$outputFile"
-  intel-bus-id = "$intelBusId";
-  nvidia-bus-id = "$nvidiaBusId";
+  intelBusId = "$intelBusId";
+  nvidiaBusId = "$nvidiaBusId";
 EOL
 fi
 
@@ -110,17 +118,17 @@ cat <<EOL >> "$outputFile"
 }
 EOL
 
-echo "The configuration file has been created successfully: $outputFile 🗂️"
-echo "-----"
+echo "Configuration file created successfully: $outputFile ️"
+echo "---"
 
 sleep 2
 
-echo "Generating The Hardware Configuration... 🛠️"
-sudo nixos-generate-config --show-hardware-config > ${outputDir}/hardware.nix
+echo "Generating The Hardware Configuration... ️"
+sudo nixos-generate-config --show-hardware-config > ./hardware.nix
 
-echo "-----"
+echo "---"
 
-echo "Now Going To Build GolluMOS, 🤞"
+echo "Now Going To Build GolluMOS, "
 NIX_CONFIG="experimental-features = nix-command flakes" 
-sudo nixos-rebuild switch --flake .#${setHostname}
+sudo nixos-rebuild switch --flake .#${hostname}
 
