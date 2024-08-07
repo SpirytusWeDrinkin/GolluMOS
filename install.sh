@@ -109,8 +109,8 @@ EOL
 # Add bus IDs for intel-nvidia
 if [ "$gpuType" == "intel-nvidia" ]; then
   cat <<EOL >> "$outputFile"
-  intelBusId = "$intelBusId";
-  nvidiaBusId = "$nvidiaBusId";
+  intel-bus-id = "$intelBusId";
+  nvidia-bus-id = "$nvidiaBusId";
 EOL
 fi
 
