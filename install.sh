@@ -74,8 +74,8 @@ read -p "GPU type: " gpuType
 
 # Get bus IDs only for intel-nvidia
 if [ "$gpuType" == "intel-nvidia" ]; then
-  read -p "Intel bus ID: " intelBusId
-  read -p "Nvidia bus ID: " nvidiaBusId
+  read -p "Intel bus ID (Format PCI:B:S:F in Base10): " intelBusId
+  read -p "Nvidia bus ID (Format PCI:B:S:F in Base10): " nvidiaBusId
 fi
 
 echo "---"
@@ -98,10 +98,10 @@ cat <<EOL > "$outputFile"
   gitUsername = "$gitUsername";
   gitEmail = "$gitEmail";
 
-  locale = "$locale";
+  aLocale = "$locale";
   keyboardLayout = "$keyboardLayout";
   keyboardVariant = "$keyboardVariant";
-  timezone = "$timezone";
+  aTimezone = "$timezone";
 
   gpuType = "$gpuType";
 EOL
