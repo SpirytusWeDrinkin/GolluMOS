@@ -84,8 +84,6 @@ read -p "Color scheme [everforest]: " colorScheme
 colorScheme=${colorScheme:-everforest}
 
 # Create output directory and file path
-outputDir="./hosts/${hostname}"
-mkdir -p "$outputDir"
 outputFile="./options.nix"
 
 # Write configuration file
@@ -99,8 +97,8 @@ cat <<EOL > "$outputFile"
   gitEmail = "$gitEmail";
 
   aLocale = "$locale";
-  keyboardLayout = "$keyboardLayout";
-  keyboardVariant = "$keyboardVariant";
+  kbLayout = "$keyboardLayout";
+  kbVariant = "$keyboardVariant";
   aTimezone = "$timezone";
 
   gpuType = "$gpuType";
