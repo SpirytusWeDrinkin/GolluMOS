@@ -52,6 +52,7 @@ let inherit (import ../../../options.nix) kbLayout kbVariant; in
                     "$mainMod, M, exit"
                     "$mainMod, E, exec, alacritty --class floating -e ranger"
                     "$mainMod, V, togglefloating"
+                    "$mainMod, F, fullscreen"
                     "$mainMod, D, exec, rofi -show drun"
                     "ALT, Tab, exec, rofi -show window"
                     "$mainMod, P, exec, sh ~/.config/rofi/leave.sh"

@@ -25,6 +25,7 @@
     libnotify
     playerctl
     unrar
+    pulseaudio
 
     #Nix package bullshit
     nix-prefetch-git
@@ -45,6 +46,7 @@
     vault
     webcord
     wayshot
+    komikku
 
     #Kube
     k3d
@@ -55,6 +57,7 @@
 
     # ?
     noto-fonts-color-emoji
+    adwaita-icon-theme
   ];
 
   programs = {

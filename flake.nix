@@ -19,7 +19,6 @@
     
     system = "x86_64-linux";
     inherit (import ./options.nix) username hostname;
-    host = hostname;
 
     pkgs = import nixpkgs {
       inherit system;
